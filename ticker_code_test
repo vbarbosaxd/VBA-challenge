@@ -1,0 +1,8 @@
+Sub ticker()
+
+Dim t As Long
+For t = 2 To 100000
+Cells(t, 9).Value = Cells(t, 1)
+Next t
+
+End Sub
