@@ -6,7 +6,7 @@ Dim Ticker_Row As Integer
     Ticker_Row = 2
     
 Dim t As Long
-    For t = 2 To 100000
+    For t = 2 To 1000000
 
 If Cells(t + 1, 1).Value <> Cells(t, 1).Value Then
     
