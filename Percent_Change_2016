@@ -1,0 +1,39 @@
+Sub Percent_Change_2016()
+'only works if all data pieces for each day for each
+'ticker are included in worksheet
+'for 2016 ONLY bc it has 262 data pieces for each ticker (mostly)
+
+Dim PC_2016 As Double
+
+Dim Ticker_Row As Integer
+    Ticker_Row = 2
+
+Dim f As Double
+    Dim c As Double
+    f = Cells(263, 6).Value
+    c = Cells(2, 3).Value
+
+    Dim n As Long
+    n = 262
+
+'for test data up to 100k for the real data range changed to up to 1M bc data set is much larger
+    Dim t As Long
+    For t = 2 To 1000000
+
+'going through all the rows in column one to find tickers
+If Cells(t + 1, 1).Value <> Cells(t, 1).Value Then
+
+    PC_2016 = (f - c) / c
+    Range("K" & Ticker_Row).Value = PC_2016
+    Ticker_Row = Ticker_Row + 1
+    f = Cells(263 + n, 6)
+    c = Cells(2 + n, 3)
+    n = n + 262
+    
+End If
+
+Next t
+    
+End Sub
+
+
