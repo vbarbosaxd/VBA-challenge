@@ -10,7 +10,7 @@ Dim Ticker_Row As Integer
 
 Dim f As Double
     Dim c As Double
-    f = Cells(263, 6).Value
+    f = Cells(262, 6).Value
     c = Cells(2, 3).Value
 
     Dim n As Long
@@ -26,7 +26,7 @@ If Cells(t + 1, 1).Value <> Cells(t, 1).Value Then
     YC = f - c
     Range("J" & Ticker_Row).Value = YC
     Ticker_Row = Ticker_Row + 1
-    f = Cells(263 + n, 6)
+    f = Cells(262 + n, 6)
     c = Cells(2 + n, 3)
     n = n + 261
     
