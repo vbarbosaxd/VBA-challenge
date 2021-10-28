@@ -1,0 +1,33 @@
+Sub Total_Stock_Volume()
+
+Dim TSV As Long
+
+Dim Ticker_Row As Integer
+    Ticker_Row = 2
+    
+Dim t As Long
+    For t = 2 To 100000
+
+If Cells(t + 1, 1).Value <> Cells(t, 1).Value Then
+    
+    TSV = TSV + Cells(t, 7).Value
+    
+    Range("L" & Ticker_Row).Value = TSV
+    
+    Ticker_Row = Ticker_Row + 1
+    
+    TSV = 0
+    
+'Trying to add:
+'Else
+'TSV = TSV + Cells(t, 7).Value
+'but overflow value too big even with CLng added to it
+'TSV = CLng (TSV + Cells(t, 7).Value)
+'Clng(TSV = Clng (TSV + Cells(t, 7).Value))
+'so dont think final values are accurate
+        
+End If
+
+Next t
+
+End Sub
