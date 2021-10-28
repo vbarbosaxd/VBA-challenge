@@ -1,0 +1,72 @@
+Sub Stock_Data_2014_2015()
+'all vba files
+'only works if all data pieces for each day for each
+'ticker are included in worksheet
+'for 2014 and 2015 ws ONLY bc has 261 data pieces for each ticker
+
+'Set variables
+    Dim Ticker_Name As String
+    
+    Dim YC As Double
+    
+        Dim f As Long
+    
+            Dim c As Long
+    
+            f = Cells(262, 6).Value
+        
+            c = Cells(2, 3).Value
+
+            Dim n As Long
+        
+            n = 261
+    
+    Dim PC As Double
+    
+    Dim TSV As Long
+    
+    Dim Ticker_Row As Integer
+    
+        Ticker_Row = 2
+
+'for test data up to 100k for the test range changed to up to 1M bc data set is much larger
+Dim t As Long
+    For t = 2 To 1000000
+
+'going through all the rows in column one to find tickers
+If Cells(t + 1, 1).Value <> Cells(t, 1).Value Then
+
+    Ticker_Name = Cells(t, 1).Value
+    
+        Range("I" & Ticker_Row).Value = Ticker_Name
+    
+    
+    YC = f - c
+    
+        Range("J" & Ticker_Row).Value = YC
+        
+        f = Cells(262 + n, 6)
+        
+        c = Cells(2 + n, 3)
+        
+        n = n + 261
+        
+    PC = (f - c) / c
+    
+        Range("K" & Ticker_Row).Value = PC
+        
+    TSV = TSV + Cells(t, 7).Value
+    
+        Range("L" & Ticker_Row).Value = TSV
+        
+        TSV = 0
+        
+    Ticker_Row = Ticker_Row + 1
+        
+    
+End If
+
+Next t
+
+End Sub
+
